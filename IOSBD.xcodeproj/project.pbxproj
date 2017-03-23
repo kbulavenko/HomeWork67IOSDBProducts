@@ -16,6 +16,10 @@
 		191E1D4F1E82BD1600F02EAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191E1D4D1E82BD1600F02EAB /* LaunchScreen.storyboard */; };
 		191E1D5A1E82BD1600F02EAB /* IOSBDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 191E1D591E82BD1600F02EAB /* IOSBDTests.m */; };
 		191E1D651E82BD1700F02EAB /* IOSBDUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 191E1D641E82BD1700F02EAB /* IOSBDUITests.m */; };
+		191E1D741E82C34300F02EAB /* MyTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 191E1D731E82C34300F02EAB /* MyTableViewDataSource.m */; };
+		19F236F71E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F236F41E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.m */; };
+		19F236F81E83070C007052F3 /* MyManagedObjectProductMO.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F236F61E83070C007052F3 /* MyManagedObjectProductMO.m */; };
+		19F236FB1E830C6D007052F3 /* MyDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F236FA1E830C6D007052F3 /* MyDataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,14 @@
 		191E1D601E82BD1700F02EAB /* IOSBDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSBDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		191E1D641E82BD1700F02EAB /* IOSBDUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSBDUITests.m; sourceTree = "<group>"; };
 		191E1D661E82BD1700F02EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		191E1D721E82C34300F02EAB /* MyTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewDataSource.h; sourceTree = "<group>"; };
+		191E1D731E82C34300F02EAB /* MyTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewDataSource.m; sourceTree = "<group>"; };
+		19F236F31E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyManagedObjectProductMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		19F236F41E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyManagedObjectProductMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		19F236F51E83070C007052F3 /* MyManagedObjectProductMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyManagedObjectProductMO.h; sourceTree = "<group>"; };
+		19F236F61E83070C007052F3 /* MyManagedObjectProductMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyManagedObjectProductMO.m; sourceTree = "<group>"; };
+		19F236F91E830C6D007052F3 /* MyDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataController.h; sourceTree = "<group>"; };
+		19F236FA1E830C6D007052F3 /* MyDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +119,14 @@
 				191E1D401E82BD1600F02EAB /* AppDelegate.m */,
 				191E1D421E82BD1600F02EAB /* ViewController.h */,
 				191E1D431E82BD1600F02EAB /* ViewController.m */,
+				191E1D721E82C34300F02EAB /* MyTableViewDataSource.h */,
+				191E1D731E82C34300F02EAB /* MyTableViewDataSource.m */,
+				19F236F31E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.h */,
+				19F236F41E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.m */,
+				19F236F51E83070C007052F3 /* MyManagedObjectProductMO.h */,
+				19F236F61E83070C007052F3 /* MyManagedObjectProductMO.m */,
+				19F236F91E830C6D007052F3 /* MyDataController.h */,
+				19F236FA1E830C6D007052F3 /* MyDataController.m */,
 				191E1D451E82BD1600F02EAB /* Main.storyboard */,
 				191E1D4B1E82BD1600F02EAB /* Assets.xcassets */,
 				191E1D4D1E82BD1600F02EAB /* LaunchScreen.storyboard */,
@@ -276,9 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F236F81E83070C007052F3 /* MyManagedObjectProductMO.m in Sources */,
+				19F236FB1E830C6D007052F3 /* MyDataController.m in Sources */,
+				191E1D741E82C34300F02EAB /* MyTableViewDataSource.m in Sources */,
 				191E1D441E82BD1600F02EAB /* ViewController.m in Sources */,
 				191E1D411E82BD1600F02EAB /* AppDelegate.m in Sources */,
 				191E1D3E1E82BD1600F02EAB /* main.m in Sources */,
+				19F236F71E83070C007052F3 /* MyManagedObjectProductMO+CoreDataProperties.m in Sources */,
 				191E1D4A1E82BD1600F02EAB /* IOSBD.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +529,7 @@
 				191E1D6B1E82BD1700F02EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		191E1D6C1E82BD1700F02EAB /* Build configuration list for PBXNativeTarget "IOSBDTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +538,7 @@
 				191E1D6E1E82BD1700F02EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		191E1D6F1E82BD1700F02EAB /* Build configuration list for PBXNativeTarget "IOSBDUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +547,7 @@
 				191E1D711E82BD1700F02EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -14,3 +14,17 @@ int main(int argc, char * argv[]) {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
+
+
+/*
+
+ IOS Приложение работает со списком продуктов
+ Выводить список продуктов в UITableView
+ Добавлять
+ продукт
+ Удалять
+ Редактировать продукт
+ 
+ Через диалоговые окна
+
+*/

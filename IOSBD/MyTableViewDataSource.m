@@ -149,12 +149,12 @@
     
     NSError  *error1   = nil;
     
-    NSString  *attributeName = @"name";  //  Название столбца
-    NSString   *attributeValue = @"Mars";   // Значение для сравнения
-    
-    NSString  *attributeName1 = @"weight";  //  Название столбца
-    int   attributeValue1 = 30;   // Значение для сравнения
-    NSPredicate   *predicate   = [NSPredicate   predicateWithFormat: @"(name contains 'Mars' ) AND (weight = 35)"];
+//    NSString  *attributeName = @"name";  //  Название столбца
+//    NSString   *attributeValue = @"Mars";   // Значение для сравнения
+//    
+//    NSString  *attributeName1 = @"weight";  //  Название столбца
+//    int   attributeValue1 = 30;   // Значение для сравнения
+//    NSPredicate   *predicate   = [NSPredicate   predicateWithFormat: @"(name contains 'Mars' ) AND (weight = 35)"];
     // NSPredicate   *predicate   = [NSPredicate   predicateWithFormat: @"%K like '%@'", attributeName, attributeValue];
     //request.predicate  = predicate;
     

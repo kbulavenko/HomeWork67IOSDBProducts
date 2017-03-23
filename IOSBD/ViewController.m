@@ -106,12 +106,12 @@
     
     NSError  *error1   = nil;
     
-    NSString  *attributeName = @"name";  //  Название столбца
-    NSString   *attributeValue = @"Mars";   // Значение для сравнения
+ //   NSString  *attributeName = @"name";  //  Название столбца
+  //  NSString   *attributeValue = @"Mars";   // Значение для сравнения
     
-    NSString  *attributeName1 = @"weight";  //  Название столбца
-    int   attributeValue1 = 30;   // Значение для сравнения
-    NSPredicate   *predicate   = [NSPredicate   predicateWithFormat: @"(name contains 'Mars' ) AND (weight = 35)"];
+  //  NSString  *attributeName1 = @"weight";  //  Название столбца
+ //   int   attributeValue1 = 30;   // Значение для сравнения
+ //   NSPredicate   *predicate   = [NSPredicate   predicateWithFormat: @"(name contains 'Mars' ) AND (weight = 35)"];
     // NSPredicate   *predicate   = [NSPredicate   predicateWithFormat: @"%K like '%@'", attributeName, attributeValue];
     //request.predicate  = predicate;
     
@@ -151,39 +151,71 @@
 {
     if(sender == self.btnAdd)
     {
+        
+#pragma mark   Добавление
+#pragma mark   ______________
+
+        
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Enter new product!"
                                                                        message:@"Name\nPrice\nWeight"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style: UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                              
-                                                                  NSDictionary    *d  = @{
-                                                                                          @"name" : alert.textFields.firstObject.text.copy,
-                                                                                          @"price" : @([alert.textFields objectAtIndex:1].text.doubleValue),
-                                                                                          @"weight" : @(alert.textFields.lastObject.text.intValue)
-                                                                                          };
-                                                                  
-                                                                  [self addToDB: d];
-                                                                  
-                                                                  NSLog(@"1111111111111111111111111");
-                                                                  
-                                                                  
-                                                                  [self.MTVC reloadDB];
-                                                                  [self.tableView reloadData];
+                                                              handler:^(UIAlertAction * action)
+                    {
+                        
+                        
+                        
+                        NSString   *name   = alert.textFields.firstObject.text.copy;
+                        NSString   *weight = alert.textFields.lastObject.text.copy;
+                        NSString   *price  = [alert.textFields objectAtIndex:1].text.copy;
+                        
+                        if([self isStringDecimalNumber:weight])
+                        {
+                            NSLog(@"weight is");
+                        }
+                        
+                        if([self isStringDecimalNumber: price])
+                        {
+                            NSLog(@"price is");
+                        }
+                        
+                        
+                        if(name.length !=0 && weight.length != 0 && price.length != 0 && [self isStringDecimalNumber: price] && [self isStringDecimalNumber:weight])
+                        {
+                            
+                          
+                              NSDictionary    *d  = @{
+                                                      @"name" : name.copy,
+                                                      @"price" : @(price.doubleValue),
+                                                      @"weight" : @(weight.intValue)
+                                                      };
+                              
+                              [self addToDB: d];
+                              
+                              NSLog(@"1111111111111111111111111");
+                              
+                              
+                              [self.MTVC reloadDB];
+                              [self.tableView reloadData];
+                        }
+                        else
+                        {
+                            [self warningAlert:@"Incorrectly entered data!"];
+                        }
 
 
-                                                              
-                                                              }];
+                                                  
+                  }];
        // alert.preferredStyle  = ;
         
         [alert addAction:defaultAction];
         
         //- (void)addTextFieldWithConfigurationHandler:(void (^)(UITextField *textField))configurationHandler;
         
-        UITextField    *name   = [[UITextField  alloc]   initWithFrame: CGRectMake(0, 0, 20, 150)];
+        UITextField    *name    = [[UITextField  alloc]   initWithFrame: CGRectMake(0, 0, 20, 150)];
         UITextField    *price   = [[UITextField  alloc]   initWithFrame: CGRectMake(160, 0, 20, 150)];
-        UITextField    *weight   = [[UITextField  alloc]   initWithFrame: CGRectMake(320, 0, 20, 150)];
+        UITextField    *weight  = [[UITextField  alloc]   initWithFrame: CGRectMake(320, 0, 20, 150)];
         
         [alert  addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField   = name;
@@ -217,6 +249,10 @@
     }
     else if(sender == self.btnDlt)
     {
+       
+#pragma mark   Удаление
+#pragma mark   ______________
+
         
         if(self.MTVC.MyData.count == 0)  return;
         NSDictionary *dict  =   [self.MTVC.MyData  objectAtIndex: self.tableView.indexPathForSelectedRow.section];
@@ -267,6 +303,10 @@
     }
     else if(sender == self.btnEdt)
     {
+        
+#pragma mark   Редактирование
+#pragma mark   ______________
+        
         if(self.MTVC.MyData.count == 0)  return;
         NSDictionary *dict  =   [self.MTVC.MyData  objectAtIndex: self.tableView.indexPathForSelectedRow.section];
         NSLog(@"Удаление %@, selecttion = %li", dict, self.tableView.indexPathForSelectedRow.section);
@@ -277,39 +317,43 @@
                                                                 preferredStyle: UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style: UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                              
-                                                                  NSDictionary    *d  = @{
-                                                                                         @"name" : alert.textFields.firstObject.text.copy,
-                                                                                         @"price" : @([alert.textFields objectAtIndex:1].text.doubleValue),
-                                                                                         @"weight" : @(alert.textFields.lastObject.text.intValue)
-                                                                                         };
-                                                                  
-                                                                  [self updateToDB:  d id: ID ];
-                                                              
-                                                                  NSLog(@"222222222222222222222222222222");
-                                                                  
-                                                                  
-                                                                  
-                                                                  
-                                                                  [self.MTVC reloadDB];
-                                                                  [self.tableView reloadData];
-
-                                                                  
-                                                                  
-                                                              }];
+                                                              handler:^(UIAlertAction * action)
+        {
+              NSString   *name   = alert.textFields.firstObject.text.copy;
+              NSString   *weight = alert.textFields.lastObject.text.copy;
+              NSString   *price  = [alert.textFields objectAtIndex:1].text.copy;
+            
+            
+            
+              if(name.length !=0 && weight.length != 0 && price.length != 0 && [self isStringDecimalNumber: price] && [self isStringDecimalNumber:weight])
+              {
+                  NSDictionary    *d  = @{
+                                          @"name" : name.copy,
+                                          @"price" : @(price.doubleValue),
+                                          @"weight" : @(weight.intValue)
+                                          };
+                  [self updateToDB:  d id: ID ];
+                  NSLog(@"222222222222222222222222222222");
+                  [self.MTVC reloadDB];
+                  [self.tableView reloadData];
+              }
+              else
+              {
+                  [self warningAlert:@"Incorrectly entered data!"];
+              }
+        }];
         // alert.preferredStyle  = ;
         
         [alert addAction:defaultAction];
         
         //- (void)addTextFieldWithConfigurationHandler:(void (^)(UITextField *textField))configurationHandler;
         
-        UITextField    *name   = [[UITextField  alloc]   initWithFrame: CGRectMake(0, 0, 20, 150)];
+        UITextField    *name   = [[UITextField  alloc]   initWithFrame: CGRectMake(0, 0, 150, 30)];
        
         name.text   =  [dict[@"name"] copy];
-        UITextField    *price   = [[UITextField  alloc]   initWithFrame: CGRectMake(160, 0, 20, 150)];
+        UITextField    *price   = [[UITextField  alloc]   initWithFrame: CGRectMake(160, 0, 150, 30)];
         price.text   =  [NSString stringWithFormat:@"%5.2f", [dict[@"price"] doubleValue] ];
-        UITextField    *weight   = [[UITextField  alloc]   initWithFrame: CGRectMake(320, 0, 20, 150)];
+        UITextField    *weight   = [[UITextField  alloc]   initWithFrame: CGRectMake(320, 0, 150, 30)];
         weight.text   = [NSString stringWithFormat:@"%i", [dict[@"weight"] intValue] ];
         [alert  addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField   = name;
@@ -339,6 +383,29 @@
         weight.text   = [NSString stringWithFormat:@"%i", [dict[@"weight"] intValue] ];
         
         alert.textFields.firstObject.text   = [dict[@"name"] copy];
+        
+//        UILabel   *lbl   = [[UILabel alloc]  initWithFrame:CGRectMake(100, -10, 150-100, 30)];
+//        lbl.text = @"name";
+//        lbl.backgroundColor  = [UIColor  clearColor];
+//        lbl.textColor       = [UIColor  lightGrayColor];
+//        
+//      //  [alert.textFields.firstObject  setFrame: CGRectMake(0, 0, 150, 30)];
+//        [ alert.textFields.firstObject  addSubview: lbl];
+//        
+//        
+//        UILabel   *lblPrice   = [[UILabel alloc]  initWithFrame:CGRectMake(100, -40, 150-100, 60)];
+//        lbl.text = @"price";
+//        lbl.backgroundColor  = [UIColor  clearColor];
+//        lbl.textColor       = [UIColor  lightGrayColor];
+        
+      //  [alert.textFields.firstObject  setFrame: CGRectMake(0, 0, 150, 30)];
+       // [ [alert.textFields objectAtIndex:1]  addSubview: lblPrice];
+        
+
+        
+        
+        
+        
         [alert.textFields objectAtIndex:1].text   = [NSString stringWithFormat:@"%5.2f", [dict[@"price"] doubleValue] ];
         alert.textFields.lastObject.text   = [NSString stringWithFormat:@"%i", [dict[@"weight"] intValue] ];
         
@@ -445,7 +512,37 @@
     
 }
 
+-(void)warningAlert: (NSString *)  message
+{
+    if(message == nil) return;
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Warning!"
+                                                                   message: message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style: UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
 
+}
+
+
+-(bool) isStringDecimalNumber :(NSString *) stringValue
+{
+    BOOL result = false;
+    
+    NSString *decimalRegex = @"^(?:|-)(?:|0|[1-9]\\d*)(?:\\.\\d*)?$";
+    NSPredicate *regexPredicate =
+    [NSPredicate predicateWithFormat:@"SELF MATCHES %@", decimalRegex];
+    
+    if ([regexPredicate evaluateWithObject: stringValue]){
+        //Matches
+        result = true;
+    }
+    
+    return result;
+}
 
 
 @end
